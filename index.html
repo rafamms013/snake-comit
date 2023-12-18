@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake Game</title>
+  <style>
+    /* Estilos CSS para a cobrinha */
+    .snake-container {
+      width: 400px;
+      height: 400px;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+    .snake {
+      width: 10px;
+      height: 10px;
+      background-color: black;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="snake-container">
+    <div class="snake" id="snake"></div>
+  </div>
+
+  <script>
+    // JavaScript para o funcionamento do jogo da cobrinha
+    const snake = document.getElementById('snake');
+    let x = 0;
+    let y = 0;
+    let xSpeed = 10;
+    let ySpeed = 0;
+
+    function moveSnake() {
+      x += xSpeed;
+      y += ySpeed;
+
+      snake.style.left = x + 'px';
+      snake.style.top = y + 'px';
+
+      requestAnimationFrame(moveSnake);
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight') {
+        xSpeed = 10;
+        ySpeed = 0;
+      } else if (event.key === 'ArrowLeft') {
+        xSpeed = -10;
+        ySpeed = 0;
+      } else if (event.key === 'ArrowDown') {
+        xSpeed = 0;
+        ySpeed = 10;
+      } else if (event.key === 'ArrowUp') {
+        xSpeed = 0;
+        ySpeed = -10;
+      }
+    });
+
+    moveSnake(); // Inicia o movimento da cobrinha
+  </script>
+</body>
+</html>
